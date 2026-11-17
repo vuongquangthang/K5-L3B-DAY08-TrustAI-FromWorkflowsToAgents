@@ -57,14 +57,16 @@
 
 ## 5. Công cụ AI đã dùng
 
-- **Công cụ sử dụng**: Trợ lý AI (Google Antigravity / Gemini CLI).
-- **Mục đích sử dụng**:
-  - Hỗ trợ tổng hợp, định dạng bảng số liệu thống kê từ tệp JSON benchmark lớn (3.795 dòng) và bonus benchmark (210 trials).
-  - Hỗ trợ xây dựng văn phong phân tích kiến trúc phần mềm chuẩn mực (Architectural Decision Record, Research Card và Bonus Report theo chuẩn học thuật Google Research / NeurIPS).
-  - Hỗ trợ thiết kế các case đối kháng và viết test assertions cho module `swarm_verified`.
-- **Quy trình tự kiểm tra kết quả (tuân thủ RULES.md)**:
-  - Tuyệt đối không để AI bịa đặt số liệu hay sửa tay các file JSON trong `src/reports/`. Mọi số liệu đưa vào báo cáo đều được trích xuất trực tiếp từ kết quả chạy thực tế của công cụ lab (`benchmark.py` và `check_submission.py`).
-  - Tự mình thẩm định và giải thích cặn kẽ bản chất kỹ thuật: cơ chế tính tiền bồi thường trong `compute_compensation`, ranh giới an toàn giữa Host và Model, và cơ chế kiểm soát secret qua allowlist views.
+- **Công cụ sử dụng**: Gemini
+- **Mục đích sử dụng:**
+- Dùng AI để giải thích nhanh các khái niệm hệ thống phức tạp như `idempotency` (tính lũy đẳng trong giao dịch), cơ chế `handoff` an toàn và ranh giới bảo mật trong `trace`.
+- Nhờ AI hỗ trợ format (định dạng) các bảng biểu Markdown trong file `TEAM.md` và cấu trúc các ý phân tích số liệu `benchmark.json` để đưa vào `research_card.md` một cách mạch lạc.
+- Nhờ AI rà soát logic khi phân tích lý do kiến trúc Swarm bị fail ở test case `status resolved != denied`.
+
+**Cách tự kiểm tra kết quả (Validation):**
+- **Không dùng AI tạo số liệu giả:** Toàn bộ số liệu điền trong `decision_adr.md` và `benchmark.json` đều được lấy từ kết quả chạy thật dưới local bằng lệnh `python -m lab8.benchmark`.
+- **Kiểm chứng chéo với tài liệu:** Đọc đối chiếu các gợi ý giải thích của AI với file `docs/business_rules.md` và `docs/contracts.md` để đảm bảo không bị sai lệch luật nghiệp vụ.
+- **Kiểm chứng bằng công cụ test:** Thay vì tin tưởng hoàn toàn mã nguồn do AI gợi ý, tôi luôn tự tay chạy lệnh `python -m lab8.crash_test --count 20` để xác nhận điểm tuyệt đối 20/20 và lệnh `python -m lab8.check_submission` để đảm bảo đầu ra báo `0 FAIL`.
 
 ## 6. Tự đánh giá
 
