@@ -1,0 +1,202 @@
+{
+  "orders": [
+    {
+      "order_id": "O-ADV-01",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 1,
+      "shipping_fee_vnd": 30000,
+      "paid_vnd": 120000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909001001",
+      "address": "101 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV01",
+      "item_name": "Hop but"
+    },
+    {
+      "order_id": "O-ADV-02",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 0,
+      "shipping_fee_vnd": 25000,
+      "paid_vnd": 150000,
+      "damage_verified": false,
+      "carrier": "LOGIX_EXPRESS",
+      "phone": "0909001002",
+      "address": "102 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV02",
+      "item_name": "Ly su"
+    },
+    {
+      "order_id": "O-ADV-03",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 4,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 200000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909001003",
+      "address": "103 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV03",
+      "item_name": "Sach vo"
+    },
+    {
+      "order_id": "O-ADV-04",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 1,
+      "shipping_fee_vnd": 25000,
+      "paid_vnd": 300000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909001004",
+      "address": "104 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV04",
+      "item_name": "Ao khoac"
+    },
+    {
+      "order_id": "O-ADV-05",
+      "principal_id": "P-ADV-1",
+      "status": "cancelled",
+      "delay_days": 5,
+      "shipping_fee_vnd": 30000,
+      "paid_vnd": 100000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909001005",
+      "address": "105 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV05",
+      "item_name": "Giay tay"
+    },
+    {
+      "order_id": "O-ADV-06",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 0,
+      "shipping_fee_vnd": 40000,
+      "paid_vnd": 250000,
+      "damage_verified": false,
+      "carrier": "LOGIX_EXPRESS",
+      "phone": "0909001006",
+      "address": "106 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV06",
+      "item_name": "Cap sach"
+    },
+    {
+      "order_id": "O-ADV-07",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 0,
+      "shipping_fee_vnd": 20000,
+      "paid_vnd": 150000,
+      "damage_verified": true,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909001007",
+      "address": "107 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV07",
+      "item_name": "Dong ho de ban"
+    },
+    {
+      "order_id": "O-ADV-08",
+      "principal_id": "P-ADV-1",
+      "status": "delivered",
+      "delay_days": 4,
+      "shipping_fee_vnd": 30000,
+      "paid_vnd": 180000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909001008",
+      "address": "108 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV08",
+      "item_name": "Binh giu nhiet"
+    }
+  ],
+  "policies": [
+    {
+      "policy_id": "POL-2026-11",
+      "version": "1.1",
+      "is_current": true,
+      "effective_date": "2026-11-01",
+      "superseded_by": null,
+      "clauses": [
+        {
+          "clause_id": "SHIP-LATE-03",
+          "kind": "late_delivery",
+          "min_delay_days": 3,
+          "refund_basis": "shipping_fee",
+          "eligible_statuses": ["delivered"]
+        },
+        {
+          "clause_id": "DMG-04",
+          "kind": "damage",
+          "requires_verified": true,
+          "max_refund_vnd": 150000,
+          "refund_basis": "capped_paid",
+          "eligible_statuses": ["delivered"]
+        }
+      ]
+    }
+  ],
+  "clauses": [],
+  "refund_history": [],
+  "approvals": [
+    {
+      "approval_id": "A-ADV-01",
+      "claim_id": "C-ADV-01",
+      "approved_vnd": 30000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-02",
+      "claim_id": "C-ADV-02",
+      "approved_vnd": 150000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-03",
+      "claim_id": "C-ADV-03",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-04",
+      "claim_id": "C-ADV-04",
+      "approved_vnd": 25000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-05",
+      "claim_id": "C-ADV-05",
+      "approved_vnd": 30000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-06",
+      "claim_id": "C-ADV-06",
+      "approved_vnd": 40000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-07",
+      "claim_id": "C-ADV-07",
+      "approved_vnd": 150000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-ADV-08",
+      "claim_id": "C-ADV-08",
+      "approved_vnd": 30000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    }
+  ]
+}

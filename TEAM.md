@@ -14,7 +14,7 @@
 |   1 | Nguyễn Thanh Tùng | 2A202603807 | 26ai.tungnt7@vinuni.edu.vn | thanhtung578804 | CP2 |
 |   2 | Nguyễn Trọng Truyền | 2A202603868 | 26ai.truyennt2@vinuni.edu.vn | truien | CP3 |
 |   3 | Lã Thái Minh | 2A202603756 | 26ai.minhlt4@vinuni.edu.vn | minh17023 | CP4 |
-|   4 | Vương Quang Thắng | 2A202603855 | 26ai.thangvq@vinuni.edu.vn | vuongquangthang | CP1 + CP5 |
+|   4 | Vương Quang Thắng | 2A202603855 | 26ai.thangvq@vinuni.edu.vn | vuongquangthang | CP1 + CP5 + Bonus B3 |
 
 Gợi ý chia vai:
 
@@ -30,7 +30,7 @@ Gợi ý chia vai:
 | Nguyễn Thanh Tùng | CP2 (shapes implementation) | `25d5335 feat: add shape implementations for orchestrator, single agent, workflow, and tests` | `src/tests/test_cp2_shapes.py::test_cp2_shapes_ignore_ticket_delay_at_seed_55`; `test_cp2_shapes_unknown_claim_returns_failed_with_valid_trace`; `test_cp2_shapes_pass_full_quote_on_partially_refunded_order` |
 | Nguyễn Trọng Truyền | CP3 (handoff, ledger, crash) | `812ea03 feat(cp3): pass crash_at to issue_refund and re-raise InjectedCrash in all shapes` | `src/tests/test_refund_idempotency.py::test_issue_refund_twice_returns_same_row` |
 | Lã Thái Minh | CP4 (approval, trace, crash safety) | `e8caa59 test: verify CP4 approval trace and crash safety` | `src/tests/test_cp4_safety.py::test_cp4_bad_approval_never_pays`; `test_cp4_trace_and_stdout_omit_untrusted_and_private_data`; `test_cp4_each_shape_recovers_without_double_refund` |
-| Vương Quang Thắng | CP1 + CP5 (evaluation, ADR, reports) | `docs(cp5): complete ADR, research card and benchmark reports` | `src/tests/test_benchmark_robustness.py::test_benchmark_metric_consistency` |
+| Vương Quang Thắng | CP1 + CP5 + Bonus B3 (evaluation, ADR, bonus verifier) | `feat(bonus): implement swarm_verified B3, adversarial suite and reports` | `src/tests/test_bonus_b3_verifier.py::test_swarm_verified_fixes_seed_55_t02_hallucination` |
 
 ## Cá nhân
 
@@ -66,19 +66,26 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
-- System Analyst & Evaluation Lead (Phụ trách Checkpoint CP1 & CP5 — Đánh giá thực nghiệm và Kiến trúc phần mềm).
+- System Analyst & Evaluation Lead (Phụ trách Checkpoint CP1, CP5 và Topic Bonus B3 — Đánh giá thực nghiệm, Kiến trúc phần mềm và Verifier chống khuếch đại lỗi).
 
 ### Đóng góp cụ thể
 
 - Thực thi ma trận benchmark 4 kiến trúc x 5 seeds, đối soát tính toàn vẹn số liệu với `src/reports/benchmark.json`.
 - Hoàn thiện Hồ sơ Quyết định Kiến trúc (`report/team/decision_adr.md`), chọn kiến trúc Workflow dựa trên chứng minh thực nghiệm (Pass rate 1.000, chi phí 27.86 VND).
 - Hoàn thiện phiếu nghiên cứu đối chiếu lý thuyết MAST NeurIPS 2025 (`report/team/research_card.md`) và báo cáo nhóm (`report/team/group_report.md`).
+- **Nhiệm vụ Điểm cộng (Bonus B3 - Google Research 2026)**:
+  + Hiện thực hóa kiến trúc `swarm_verified` tại `src/bonus/swarm_verified.py`, tích hợp Code Verifier & Reconciler đối chiếu dữ kiện với SQLite DB, sửa triệt để lỗi ảo giác tại seed 55 (`status resolved != denied`).
+  + Xây dựng bộ dữ liệu 8 khiếu nại đối kháng tại `src/bonus/cases.jsonl` và `src/bonus/world.json`.
+  + Viết bộ test `src/tests/test_bonus_b3_verifier.py` (3 test pass 100%).
+  + Chạy benchmark thực nghiệm `src/reports/bonus_benchmark.json` (Pass rate 1.000, Pass^5 1.000, variance 0.000000) và hoàn thành báo cáo `report/team/bonus_report.md`.
 
 ### Bằng chứng
 
-- Commit: `docs(cp5): complete ADR, research card and benchmark reports`
+- Commit: `feat(bonus): implement swarm_verified B3, adversarial suite and reports`
 - Báo cáo cá nhân chi tiết: `report/team/2A202603855_VuongQuangThang.md`
-- Test: `src/tests/test_benchmark_robustness.py::test_benchmark_metric_consistency`
+- Báo cáo Bonus: `report/team/bonus_report.md`
+- Dữ liệu benchmark: `src/reports/bonus_benchmark.json`
+- Tests: `src/tests/test_bonus_b3_verifier.py::test_swarm_verified_fixes_seed_55_t02_hallucination`
 
 ## 2A202603868_NguyenTrongTruyen
 
