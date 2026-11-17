@@ -29,7 +29,7 @@ Gợi ý chia vai:
 | --- | --- | --- | --- |
 | Nguyễn Thanh Tùng | CP2 (shapes implementation) | `25d5335 feat: add shape implementations for orchestrator, single agent, workflow, and tests` | `src/tests/test_cp2_shapes.py::test_workflow_deterministic_flow` |
 | Nguyễn Trọng Truyền | CP3 (handoff, ledger, crash) | `812ea03 feat(cp3): pass crash_at to issue_refund and re-raise InjectedCrash in all shapes` | `src/tests/test_refund_idempotency.py::test_issue_refund_twice_returns_same_row` |
-| Lã Thái Minh | CP4 (safety, approval, secret) | `e8caa59 test: verify CP4 approval trace and crash safety` | `src/tests/test_cp4_safety.py::test_approval_bound_to_claim` |
+| Lã Thái Minh | CP4 (approval, trace, crash safety) | `e8caa59 test: verify CP4 approval trace and crash safety` | `src/tests/test_cp4_safety.py::test_cp4_bad_approval_never_pays`; `test_cp4_trace_and_stdout_omit_untrusted_and_private_data`; `test_cp4_each_shape_recovers_without_double_refund` |
 | Vương Quang Thắng | CP1 + CP5 (evaluation, ADR, reports) | `docs(cp5): complete ADR, research card and benchmark reports` | `src/tests/test_benchmark_robustness.py::test_benchmark_metric_consistency` |
 
 ## Cá nhân
@@ -80,3 +80,22 @@ Sao chép mục dưới đây cho từng thành viên.
 - Commit: `812ea03 feat(cp3): pass crash_at to issue_refund and re-raise InjectedCrash in all shapes` (nhánh `truien`)
 - Kết quả chạy: `python -m pytest -q` → 63 passed; `python -m pytest -q -m student -o addopts=` → 248 passed, 0 failed
 - Test liên quan: `src/tests/test_public_matrix.py::test_t12_crash_before_checkpoint_does_not_double_pay`
+
+## 2A202603756_LaThaiMinh
+
+### Phần việc phụ trách
+
+- CP4 — kiểm chứng cổng approval, bảo mật trace/stdout và khả năng resume sau crash của ba shape `workflow`, `single`, `orchestrator`.
+
+### Đóng góp cụ thể
+
+- Thêm 27 trường hợp test CP4: approval thiếu, sai claim, bị thu hồi, hết hạn hoặc có số tiền bằng 0; kiểm tra dữ liệu nhạy cảm không xuất hiện trong trace/stdout; kiểm tra ba điểm crash trên từng shape.
+- Xác nhận quote dương bị host từ chối không ghi refund, có audit `policy_denied`; resume chỉ để lại một refund và một audit `refund_committed`.
+- Chạy crash suite 20 điểm và lưu báo cáo do công cụ lab sinh ra.
+
+### Bằng chứng
+
+- Commit: `e8caa59 test: verify CP4 approval trace and crash safety`.
+- Test: `src/tests/test_cp4_safety.py` — 27 passed; cổng host sau khi thêm test — 90 passed.
+- Báo cáo: `src/reports/crash.json` — `crash_safety = 20/20`.
+- Báo cáo cá nhân: `report/team/2A202603756_LaThaiMinh.md`.
