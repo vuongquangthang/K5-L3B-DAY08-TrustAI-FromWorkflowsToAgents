@@ -27,7 +27,7 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Nguyễn Thanh Tùng | CP2 (shapes implementation) | `25d5335 feat: add shape implementations for orchestrator, single agent, workflow, and tests` | `src/tests/test_cp2_shapes.py::test_workflow_deterministic_flow` |
+| Nguyễn Thanh Tùng | CP2 (shapes implementation) | `25d5335 feat: add shape implementations for orchestrator, single agent, workflow, and tests` | `src/tests/test_cp2_shapes.py::test_cp2_shapes_ignore_ticket_delay_at_seed_55`; `test_cp2_shapes_unknown_claim_returns_failed_with_valid_trace`; `test_cp2_shapes_pass_full_quote_on_partially_refunded_order` |
 | Nguyễn Trọng Truyền | CP3 (handoff, ledger, crash) | `812ea03 feat(cp3): pass crash_at to issue_refund and re-raise InjectedCrash in all shapes` | `src/tests/test_refund_idempotency.py::test_issue_refund_twice_returns_same_row` |
 | Lã Thái Minh | CP4 (approval, trace, crash safety) | `e8caa59 test: verify CP4 approval trace and crash safety` | `src/tests/test_cp4_safety.py::test_cp4_bad_approval_never_pays`; `test_cp4_trace_and_stdout_omit_untrusted_and_private_data`; `test_cp4_each_shape_recovers_without_double_refund` |
 | Vương Quang Thắng | CP1 + CP5 (evaluation, ADR, reports) | `docs(cp5): complete ADR, research card and benchmark reports` | `src/tests/test_benchmark_robustness.py::test_benchmark_metric_consistency` |
@@ -43,6 +43,24 @@ report/team/MSSV_HoTen.md
 Ví dụ: `report/team/2A202603855_VuongQuangThang.md`.
 
 Sao chép mục dưới đây cho từng thành viên.
+
+## 2A202603807_NguyenThanhTung
+
+### Phần việc phụ trách
+
+- Core Shapes Implementation Engineer (Phụ trách Checkpoint CP2 — Triển khai ba shape `workflow`, `single`, `orchestrator` và bộ kiểm thử đơn vị CP2).
+
+### Đóng góp cụ thể
+
+- Hiện thực hóa đầy đủ luồng xử lý claim cho ba kiến trúc `workflow.py` (tuần tự xác định), `single.py` (vòng lặp ReAct `max_steps=8`), và `orchestrator.py` (orchestrator kết hợp read-only investigators qua `make_handoff`).
+- Đảm bảo tính tiền hoàn bằng code (`compute_compensation`), truyền quote đầy đủ vào `durability.issue_refund` để host kiểm soát approval và trần hoàn tiền theo đơn (T13, T14), đóng gói kết quả bằng `finish()` và ghi trace đúng chuẩn Trace contract v1.
+- Xây dựng bộ 9 unit test trong `src/tests/test_cp2_shapes.py` kiểm chứng cả 3 shape không bị đánh lừa bởi số ngày trễ trong ticket ở seed 55 (T02), xử lý an toàn `claim_id` không tồn tại kèm trace hợp lệ, và truyền quote đầy đủ trên đơn đã hoàn một phần (T14).
+
+### Bằng chứng
+
+- Commit: `25d5335 feat: add shape implementations for orchestrator, single agent, workflow, and tests` (nhánh `thanhtung`).
+- Test: `src/tests/test_cp2_shapes.py` (`test_cp2_shapes_ignore_ticket_delay_at_seed_55`, `test_cp2_shapes_unknown_claim_returns_failed_with_valid_trace`, `test_cp2_shapes_pass_full_quote_on_partially_refunded_order` — 9 passed).
+- Báo cáo cá nhân chi tiết: `report/team/2A202603807_NguyenThanhTung.md`.
 
 ## 2A202603855_VuongQuangThang
 
