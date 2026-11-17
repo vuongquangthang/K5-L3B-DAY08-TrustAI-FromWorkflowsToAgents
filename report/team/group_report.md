@@ -7,7 +7,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 - Tên nhóm: TrustAI
 - Lớp: L3B
 - Thành viên: xem `TEAM.md`
-- Commit chốt (trùng `report/team/decision_adr.md`): `[ĐIỀN_COMMIT_HASH_7_KY_TU_O_DAY]`
+- Commit chốt (trùng `report/team/decision_adr.md`): b9ab387
 
 ## 2. Mục tiêu và cách tiếp cận
 

@@ -5,7 +5,7 @@
 - Tên nhóm: TrustAI
 - Lớp: L3B
 - Repo nhóm: `K5-L3B-DAY08-TrustAI-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt: https://github.com/vuongquangthang/K5-L3B-DAY08-TrustAI-FromWorkflowsToAgents / main / 
+- URL repo, nhánh nộp, commit chốt: https://github.com/vuongquangthang/K5-L3B-DAY08-TrustAI-FromWorkflowsToAgents / main / b9ab387
 
 ## Thành viên
 
